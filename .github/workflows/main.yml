@@ -31,14 +31,14 @@ jobs:
 
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish BlazorWASM.csproj -c Release -p GHPages=true -o dist/Web --nologo
+        run: dotnet publish BlazorWASM.csproj -c Release -p GHPages=true -o release --nologo
  
-      - name: Change base-tag in index.html from / to WASM
-        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorDemo\/" \/>/g' dist/Web/index.html
+      - name: Change base-tag in index.html from / to BlazorDemo
+        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorDemo\/" \/>/g' release/index.html
       
       # Commit wwwroot to GitHub Pages
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
-          FOLDER: dist/Web/wwwroot
+          FOLDER: release/wwwroot
