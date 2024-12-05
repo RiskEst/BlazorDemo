@@ -31,7 +31,7 @@ jobs:
 
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish Demo.csproj -c Release -p GHPages=true -o dist/Web --nologo
+        run: dotnet publish BlazorWASM.csproj -c Release -p GHPages=true -o dist/Web --nologo
  
       - name: Change base-tag in index.html from / to WASM
         run: sed -i 's/<base href="\/" \/>/<base href="\/WASM\/" \/>/g' dist/Web/index.html
