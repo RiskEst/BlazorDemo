@@ -20,10 +20,10 @@ jobs:
       run: dotnet workload install wasm-tools
       
     - name: Publish .NET Core Project
-      run: dotnet publish BlazorWASM.csproj -c Release -p:GHPages=true -o release --nologo
+      run: dotnet publish Demo.csproj -c Release -p:GHPages=true -o release --nologo
 
     - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-      run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorDemo\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's/<base href="\/" \/>/<base href="\/WASM\/" \/>/g' release/wwwroot/index.html
       
     - name: Add .nojekyll file
       run: touch release/wwwroot/.nojekyll
